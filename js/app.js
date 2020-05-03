@@ -24,7 +24,9 @@
  * Start Helper Functions
  * 
 */
-
+function getAllSections() {
+    return document.querySelectorAll('section');
+}
 
 
 /**
@@ -34,6 +36,18 @@
 */
 
 // build the nav
+function createNav() {
+    const sections = getAllSections();
+    const ul = document.querySelector('#navbar__list');
+    sections.forEach((section) => {
+        const li = document.createElement('li');
+        li.textContent = section.getAttribute('data-nav');
+        ul.appendChild(li);
+    });
+    ul.classList.toggle('menu__link');
+}
+
+createNav();
 
 
 // Add class 'active' to section when near top of viewport

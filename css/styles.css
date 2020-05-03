@@ -50,7 +50,7 @@ main {
     margin: 10vh 1em 10vh;
 }
 
-.main-hero {
+.main__hero {
     min-height: 40vh;
     padding-top: 3em;
 }
@@ -94,7 +94,7 @@ section {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 5;
+    /* z-index: 5; */
 }
 
 /* Footer Styles */
@@ -124,7 +124,7 @@ section {
 }
 
 section:nth-of-type(even) .landing__container {
-    margin-right: 0;
+    /* margin-right: 0; */
     margin-left: auto;
     text-align: right; 
 }
@@ -159,7 +159,7 @@ section:nth-of-type(even) .landing__container::before {
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(3n) .landing__container::after {
+section:nth-of-type(n) .landing__container::after {
     content: '';
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
@@ -174,7 +174,7 @@ section:nth-of-type(3n) .landing__container::after {
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(3n + 1) .landing__container::after {
+section:nth-of-type(n + 1) .landing__container::after {
     content: '';
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
