@@ -17,7 +17,8 @@
  * Define Global Variables
  * 
 */
-
+var ul;
+var sections;
 
 /**
  * End Global Variables
@@ -37,11 +38,11 @@ function getAllSections() {
 
 // build the nav
 function createNav() {
-    const sections = getAllSections();
-    const ul = document.querySelector('#navbar__list');
-    sections.forEach((section) => {
+    sections = getAllSections();
+    ul = document.querySelector('#navbar__list');
+    sections.forEach(section => {
         const li = document.createElement('li');
-        li.textContent = section.getAttribute('data-nav');
+        li.innerHTML = `<a href='#${section.id}'>${section.getAttribute('data-nav')}</a>`;
         ul.appendChild(li);
     });
     ul.classList.toggle('menu__link');
@@ -49,23 +50,31 @@ function createNav() {
 
 createNav();
 
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
 /**
  * End Main Functions
  * Begin Events
  * 
 */
 
-// Build menu 
-
 // Scroll to section on link click
+function scrollToSection() {
+    document.addEventListener('scroll', function handleClick() {
+        setSectionAsActive();   
+    });
+}
+scrollToSection();
 
 // Set sections as active
+function setSectionAsActive() {
+    sections.forEach(section => {
+        const bounding = section.getBoundingClientRect();
+        if (bounding.top <= 350 && bounding.bottom >= 300) {
+            section.classList.toggle('your-active-class');
+        } else {
+            section.classList.remove('your-active-class');   
+        }
+    });
+}
+
 
 
