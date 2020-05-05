@@ -57,8 +57,21 @@ createNav();
 */
 
 // Scroll to section on link click
+function smoothlyScrollToSectionOnClick() {
+    ul.addEventListener('click', function handleClick(event) {
+        event.preventDefault();
+        sections.forEach(section => {
+            if(section.getAttribute('data-nav') == event.target.textContent) {
+                section.scrollIntoView({behavior: "smooth"});
+            }
+        });
+    });
+}
+
+smoothlyScrollToSectionOnClick();
+
 function scrollToSection() {
-    document.addEventListener('scroll', function handleClick() {
+    document.addEventListener('scroll', function handleScroll() {
         setSectionAsActive();   
     });
 }
@@ -69,7 +82,7 @@ function setSectionAsActive() {
     sections.forEach(section => {
         const bounding = section.getBoundingClientRect();
         if (bounding.top <= 350 && bounding.bottom >= 300) {
-            section.classList.toggle('your-active-class');
+            section.classList.add('your-active-class');
         } else {
             section.classList.remove('your-active-class');   
         }
